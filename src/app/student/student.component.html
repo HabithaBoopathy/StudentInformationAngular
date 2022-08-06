@@ -1,0 +1,118 @@
+<p>student works!</p>
+<html lang="en">
+  <head>
+    <title>Angular Reactive Forms</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <!-- <app-rank></app-rank> -->
+  </body>
+
+</html>
+<div class="col-md-6 offset-md-3">
+  <h3> Create Employee </h3>
+  <!--<form (ngSubmit) = "onClick()">-->
+<div class="col-xs-2 col-md-2">
+    <div class="card">
+      <div class="card-header">
+        <div><h3> Details</h3></div>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label><h5>ID</h5></label>
+          <input
+            type="text"
+            id="studentId"
+            class="form-control"
+            style="display: inline"
+            [(ngModel)]="student.studentId"
+          /> 
+        </div>
+        <div class="form-group">
+          <label><h5>Name</h5></label>
+          <input
+            type="text"
+            id="studentName"
+            class="form-control"
+            style="display: inline"
+            [(ngModel)]="student.studentName">
+            
+        </div>
+        <div class="form-group">
+  
+          <label><h2>Class</h2></label>
+            
+             <select (change)="selectChangeHandler($event)">
+              <option>Select</option>
+                <option *ngFor="let rank of this.ranks;let i = index" value="{{rank}}" [selected]="i == 0">
+                  {{rank.studentRank}}
+                </option>
+              </select>
+              <p><span>You selected: </span><b>{{selectedRank}}</b></p>
+              </div>
+               <div class="form-group">
+                <label><h2>Section</h2></label>
+                   <select>
+                    <option>Select</option>
+                      <option *ngFor="let section of this.sections;let i = index" value="{{section}}" [selected]="i == 0">
+                        {{section.studentSection}}
+                      </option>
+                    </select>
+                    </div> 
+
+                    
+    <div class="form-group">
+      <label><h5>Address</h5></label>
+      <input
+        type="textarea"
+        id="studentAddress"
+         class="form-control"
+        [(ngModel)]="student.studentAddress"
+      /></div>
+      <div class="form-group">
+        <button type="button" class="btn btn-block btn-primary" (click)="onRegister()">
+          Register
+        </button>
+
+        <button class="btn btn-block btn-success" (click)="onUpdate()">
+          Update
+        </button>
+      </div>   
+    </div> 
+  </div> 
+
+
+<div class="col-xs-6 col-md-6">
+<div class="row" *ngFor="let student of students">
+<div class="col-xs-10 col-md-10" style="margin-bottom: 20px">
+<div class="card" style="height: 180px">
+<div class="card-header">
+<div
+  class="col-xs-10 col-md-10"
+  style="display: inline-block; color: rgb(2, 11, 20)">
+
+<h5>{{student.studentId}}</h5>
+<h5>{{student.studentName}}</h5>
+<h5>{{selectedRank}}</h5>
+<h5>{{student["studentRank"]}}</h5>
+<h5>{{student.studentAddress}}</h5>
+
+</div>
+<div class="col-xs-2 col-md-2" style="display: inline-block">
+  <h6
+    style="
+      cursor: pointer;
+      text-align: left;
+      padding-bottom: 5px;
+      width: 10px;
+      background-color: #d90000;
+      color: white;
+    "
+    (click)="onDelete(student.studentId)"
+  >
+    x
+  </h6>
+</div>
+
